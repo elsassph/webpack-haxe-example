@@ -120,6 +120,10 @@ Then start Webpack webserver, open `http://localhost:8080`, and enjoy live reloa
 
 	npm start
 
+If you want fancy automatic building of the Haxe project, check `haxe-wachify`:
+
+	haxe-watchify --program haxe --hxml build.hxml --src src/haxe
+
 ## Gotchas
 
 - **Shared classes can not be in the global package.**
