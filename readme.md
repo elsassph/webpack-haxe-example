@@ -87,19 +87,22 @@ Here's the example script explained:
 
 1. Common compiler options
 
-	Those should include the `Stub.modules()` macro which does tiny (but immportant) JS modification
-	to each JS produced, followed by `--each` to start defining modules' builds. 
+	Those should include the `Stub.modules()` macro which does tiny (but important) JS modifications
+	to each JS file produced, followed by `--each` to start defining the modules builds. 
 
 		-cp src/haxe
 		-debug
 		--macro util.Stub.modules()
 		--each
 
-2. The builds (the order doesn't matter)
+2. The builds (order doesn't matter)
 
-	The important part is to use the `--exclude` macro to ommit classes/packages that are 
+	The important part is to use the built-in `--exclude` macro to omit classes/packages that are 
 	expected to be loaded, and `--next` between each module. Here `-main` is specified only for the
-	main JS entry point.
+	main JS entry point. 
+	
+	Unlike normal Webpack where every single class is separately required, 
+	you have to define the general bundling of your Haxe application and pre-bundle the code.
 
 	Note that the JS files are generated under `src/js`: this is where Webpack is going to look
 	for the JS sources to bundle.
@@ -114,10 +117,12 @@ Here's the example script explained:
 		-main Main
 		--macro exclude('module1')
 
-3. Webpackconfig.js
+### Webpack config
 
-	The rest of the magic is configured in `webpackconfig.js`. It's kind of ugly and complicated, so
-	read everything you can find about it to properly understand how it works ;)
+Webpack's "magic" is configured in the `webpackconfig.js`. It's kind of ugly and complicated, so
+read everything you can find about it to properly understand how it works ;)
+
+The config provided here is fairly rudimentary and not fit for production purposes.
 
 ### Running
 
@@ -144,11 +149,10 @@ application's code (`new`, `Std.is`, `Type` reflection...).**
 reflection in the modules code, otherwise the compiler will not generate the reflection metadata.
 Alternatively you can set `-dce no` in the compiler arguments for the module.
 
-- There's no clean way to actually expose something to `window` or `exports`; you can do it 
-explicitly for now (a little macro could solve it I guess): 
+- Regular `@:expose` behaviour doesn't create global references on `window` - to expose a Haxe class it is 
+necessary to explicitely create the reference somewhere in your code:
 
 	    untyped window.MyPublicClass = MyPublicClass
-	    untyped exports.MyPublicClass = MyPublicClass
 
 ## Further improvements
 
