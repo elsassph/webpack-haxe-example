@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"index.js",
+"sourceRoot":"file:///",
+"sources":["C:/Dev/tests/haxe/webpack-haxe-example/src/haxe/Main.hx","C:/Dev/tests/haxe/webpack-haxe-example/src/haxe/util/Webpack.hx","C:/Dev/tests/haxe/webpack-haxe-example/src/haxe/com/common/BaseModule.hx"],
+"names":[],
+"mappings":";;;;;OAqBO,IACP;CACW;CACV,EAAO;CACP,EAAkB;CAClB,AAAqB;CAEV;CACX,EAAa;CACb,EAAe;CACf,EAAkB;CAClB,AAAiB;;YAlBX,DACP;CCOsB,ADNJ;CAEP;;;aAiBX,DACA;EADA;ECrBsB,DDuBN,AAAE,AAAa,ACvBgB,UAAW;GAHtC,FD0BF;GC1BE,FD0BW;GCrB7B,ADqB+C;;EAChD,KAAO;;cAGR,HACA;EACC,UAAO;EACM;EACb,CAAa;EACb,DAAiB;;cAGlB,CAEC;YAAO,TAAQ,AAAI;;;oCEzCb,zBACP;CACW;CACV,EAAO;;;;;;;;"
+}

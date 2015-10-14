@@ -1,0 +1,15 @@
+-cp src/haxe
+-debug
+--macro util.Stub.modules()
+
+--each
+
+-js src/js/module1.js
+module1.Module1
+--macro exclude('com.common')
+
+--next
+
+-js src/js/index.js
+-main Main
+--macro exclude('module1')
