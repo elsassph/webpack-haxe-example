@@ -96,7 +96,15 @@ Here's the example script explained:
 
 ### Running
 
-Start Webpack webserver and open `http://localhost:8080`:
+Install node dependencies:
+	
+	npm install
+
+Build the Haxe side as usual:
+
+	haxe build.hxml
+
+Then start Webpack webserver, open `http://localhost:8080`, and enjoy live reload:
 
 	npm start
 
