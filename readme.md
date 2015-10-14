@@ -90,6 +90,12 @@ Here's the example script explained:
 		-main Main
 		--macro exclude('module1')
 
+### Running
+
+Start Webpack webserver and open `http://localhost:8080`:
+
+	npm start
+
 ## Gotchas
 
 - **Shared classes can not be in the global package.**
