@@ -33,6 +33,12 @@ Eg.
 	var img = new Image();
 	img.src = Webpack.require('../logo.png'); // either the image URL or base64-encoded picture
 
+Tip - shorter syntax:
+
+	import util.Webpack.require;
+	...
+	require('../index.css');
+
 #### Lazy loading
 
 Following Webpack API we just have to write:
@@ -44,6 +50,12 @@ Following Webpack API we just have to write:
 
 `ensure` is a macro which will generate the needed Webpack-compatible JS code making the module
 code (you can also require CSS files here) available.
+
+Tip - shorter syntax:
+
+	import util.Webpack.ensure;
+	...
+	ensure(['./module1'], function() {...});
 
 #### External libraries
 
