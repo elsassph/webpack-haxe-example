@@ -1,7 +1,7 @@
 # Modular Haxe JS with Webpack
 
 This project demonstrates the creation of a Haxe-JavaScript modular project leveraging Webpack 
-for bundling and lazy loading.
+for bundling (code and assets) and lazy loading.
 
 It's really easy and absolutely transparent in the code!
 
@@ -9,29 +9,30 @@ It's really easy and absolutely transparent in the code!
 
 ### Generating a modular Haxe JS application
 
-Important: I'm not using [Modular JS for Haxe](https://github.com/explorigin/modular-js)
-to make the JS output fully require-friendly - I don't like the idea of using a completely 
-custom JS backend and prefer using the best output the compiler can do. But feel free to check it!
-
 The basics of creating a modular Haxe JS application have been described in my 
 [Modular Haxe Example](https://github.com/elsassph/modular-haxe-example) project. 
 The same principle is at work here.
+
+*Note: this is a different approach than [Modular JS for Haxe](https://github.com/explorigin/modular-js)
+to make the JS output require-friendly - I don't like the idea of creating a completely custom JS backend 
+and prefer using the best output the compiler can do. But feel free to check it too!*
 
 ### Leveraging Webpack features
 
 Pre-requisite: you should be familiar with Webpack to enjoy what follows.
 
+Webpack analyses your JS code looking for `require` and `require.ensure` to know what to include
+in your project (JS, CSS, images...) and how  to split it into separate bundles for lazy loading.
+
 #### Bundling
 
-Webpack analyses your JS code to identify `require` and `require.ensure` to know what to include
-in your project (JS, CSS, images...).
-
-Eg.
+Every code and assets dependency should be explictely required, so Webpack knows what to include in the
+output folder. CSS and small images will even be included in the bundle to reduce the number of requests.
 
 	Webpack.require('../index.css'); // includes styles in the bundle
 
 	var img = new Image();
-	img.src = Webpack.require('../logo.png'); // either the image URL or base64-encoded picture
+	img.src = Webpack.require('../logo.png'); // either image URL or base64-encoded picture
 
 Tip - shorter syntax:
 
@@ -41,6 +42,9 @@ Tip - shorter syntax:
 
 #### Lazy loading
 
+When using `require.ensure`, Webpack will try to identify dependencies which can be deferred to first use - 
+it will create additional bundles which will be loaded when needed. 
+
 Following Webpack API we just have to write:
 
 	Webpack.ensure(['./module1'], function() {
@@ -48,8 +52,8 @@ Following Webpack API we just have to write:
 		new module1.Module1();
     });
 
-`ensure` is a macro which will generate the needed Webpack-compatible JS code making the module
-code (you can also require CSS files here) available.
+`ensure` is a small macro which will generate the needed Webpack ensure/require JS code necessary to 
+mark,  load and  evaluate a lazy-loading module.
 
 Tip - shorter syntax:
 
@@ -83,10 +87,10 @@ Here's the example script explained:
 
 1. Common compiler options
 
-	Those should include the `Stub.modules()` macro which does the JS modification previously
-	described, and finishing by `--each` to start defining builds. 
+	Those should include the `Stub.modules()` macro which does tiny (but immportant) JS modification
+	to each JS produced, followed by `--each` to start defining modules' builds. 
 
-		-cp src
+		-cp src/haxe
 		-debug
 		--macro util.Stub.modules()
 		--each
@@ -94,8 +98,8 @@ Here's the example script explained:
 2. The builds (the order doesn't matter)
 
 	The important part is to use the `--exclude` macro to ommit classes/packages that are 
-	expected to be loaded, and `--next` between each module. Here we only have `-main` for the 
-	main JS because we want the static main to be executed.
+	expected to be loaded, and `--next` between each module. Here `-main` is specified only for the
+	main JS entry point.
 
 	Note that the JS files are generated under `src/js`: this is where Webpack is going to look
 	for the JS sources to bundle.
@@ -110,6 +114,11 @@ Here's the example script explained:
 		-main Main
 		--macro exclude('module1')
 
+3. Webpackconfig.js
+
+	The rest of the magic is configured in `webpackconfig.js`. It's kind of ugly and complicated, so
+	read everything you can find about it to properly understand how it works ;)
+
 ### Running
 
 Install node dependencies:
@@ -120,7 +129,7 @@ Then start Webpack webserver, open `http://localhost:8080`, and enjoy live reloa
 
 	npm start
 
-If you want fancy automatic building of the Haxe project, check `haxe-wachify`:
+If you want fancy automatic building of the Haxe side, check `haxe-wachify`:
 
 	haxe-watchify --program haxe --hxml build.hxml --src src/haxe
 
