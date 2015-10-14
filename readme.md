@@ -9,9 +9,13 @@ It's really easy and absolutely transparent in the code!
 
 ### Generating a modular Haxe JS application
 
+Important: I'm not using [Modular JS for Haxe](https://github.com/explorigin/modular-js)
+to make the JS output fully require-friendly - I don't like the idea of using a completely 
+custom JS backend and prefer using the best output the compiler can do. But feel free to check it!
+
 The basics of creating a modular Haxe JS application have been described in my 
 [Modular Haxe Example](https://github.com/elsassph/modular-haxe-example) project. 
-The same principle is at work here.   
+The same principle is at work here.
 
 ### Leveraging Webpack features
 
