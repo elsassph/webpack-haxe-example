@@ -58,7 +58,11 @@ Webpack will take care of bundling those libraries and make them available when 
 
 ## Example
 
-### Building:
+### Building
+
+Build the Haxe side as usual:
+
+	haxe build.hxml
 
 The hxml script defines common build properties, then builds the module and then the main application.
 Obviously you can create several build scripts instead.
@@ -99,10 +103,6 @@ Here's the example script explained:
 Install node dependencies:
 	
 	npm install
-
-Build the Haxe side as usual:
-
-	haxe build.hxml
 
 Then start Webpack webserver, open `http://localhost:8080`, and enjoy live reload:
 
