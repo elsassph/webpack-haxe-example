@@ -149,8 +149,8 @@ application's code (`new`, `Std.is`, `Type` reflection...).**
 reflection in the modules code, otherwise the compiler will not generate the reflection metadata.
 Alternatively you can set `-dce no` in the compiler arguments for the module.
 
-- Regular `@:expose` behaviour doesn't create global references on `window` - to expose a Haxe class it is 
-necessary to explicitely create the reference somewhere in your code:
+- `@:expose` behaviour has changed and doesn't create a global references on `window` as you might expect - 
+to expose a Haxe class it is necessary to explicitely create the reference somewhere in your code:
 
 	    untyped window.MyPublicClass = MyPublicClass
 
