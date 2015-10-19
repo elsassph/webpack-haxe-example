@@ -29,16 +29,20 @@ in your project (JS, CSS, images...) and how  to split it into separate bundles 
 Every code and assets dependency should be explictely required, so Webpack knows what to include in the
 output folder. CSS and small images will even be included in the bundle to reduce the number of requests.
 
-	Webpack.require('../index.css'); // includes styles in the bundle
+```haxe
+Webpack.require('../index.css'); // includes styles in the bundle
 
-	var img = new Image();
-	img.src = Webpack.require('../logo.png'); // either image URL or base64-encoded picture
+var img = new Image();
+img.src = Webpack.require('../logo.png'); // either image URL or base64-encoded picture
+```
 
 Tip - shorter syntax:
 
-	import util.Webpack.require;
-	...
-	require('../index.css');
+```haxe
+import util.Webpack.require;
+...
+require('../index.css');
+```
 
 #### Lazy loading
 
@@ -47,27 +51,33 @@ it will create additional bundles which will be loaded when needed.
 
 Following Webpack API we just have to write:
 
-	Webpack.ensure(['./module1'], function() {
-		// ready to use!
-		new module1.Module1();
-    });
+```haxe
+Webpack.ensure(['./module1'], function() {
+	// ready to use!
+	new module1.Module1();
+});
+```
 
 `ensure` is a small macro which will generate the needed Webpack ensure/require JS code necessary to 
 mark,  load and  evaluate a lazy-loading module.
 
 Tip - shorter syntax:
 
-	import util.Webpack.ensure;
-	...
-	ensure(['./module1'], function() {...});
+```haxe
+import util.Webpack.ensure;
+...
+ensure(['./module1'], function() {...});
+```
 
 #### External libraries
 
 If you're making externs for JS libraries compatible with CommonJS (eg. most libraries nowadays)
 you should bind your externs using the `@:jsRequire` meta:
 
-	@:jsRequire('react')
-	extern class React { ... } 
+```haxe
+@:jsRequire('react')
+extern class React { ... } 
+```
 
 Webpack will take care of bundling those libraries and make them available when you need them.
 
@@ -152,7 +162,9 @@ Alternatively you can set `-dce no` in the compiler arguments for the module.
 - `@:expose` behaviour has changed and doesn't create a global references on `window` as you might expect - 
 to expose a Haxe class it is necessary to explicitely create the reference somewhere in your code:
 
-	    untyped window.MyPublicClass = MyPublicClass
+```haxe
+	untyped window.MyPublicClass = MyPublicClass
+```
 
 ## Further improvements
 
