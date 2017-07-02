@@ -74,14 +74,34 @@ entry: {
 },
 ```
 
-### Running
+## Development
 
-Using `yarn` is recommended. If you have `npm` already just run `npm install yarn -g`.
+### Tools
 
-Install node dependencies:
-	
+Using [yarn](https://yarnpkg.com) for node modules is recommended:
+
+	npm install yarn -g
+
+Using [hmm](https://github.com/andywhite37/hmm) for haxelibs is recommended:
+
+	haxelib --global install hmm
+	haxelib --global run hmm setup
+
+### Installation
+
+Install npm and haxe dependencies:
+
 	yarn install
+	hmm install
+
+### Running
 
 Then start Webpack webserver, open `http://localhost:9000`, and enjoy live reload:
 
 	yarn start
+
+### Releasing
+
+To build the project statically, run:
+
+	yarn build

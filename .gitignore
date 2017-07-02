@@ -3,3 +3,4 @@ yarn-error.log
 vscode-project.hxml
 www/
 *.hxproj
+.haxelib/
