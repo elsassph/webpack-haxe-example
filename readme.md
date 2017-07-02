@@ -52,8 +52,9 @@ Webpack.bundle(Foo).then(function(_) {
 Webpack's "magic" is configured in the `webpack.config.js`. It is a very powerful and
 flexible system which is documented here: [https://webpack.js.org/]()
 
-The basics is that the `haxe-loader` allow to "require" an HXML file, which in turn
-will provide the JS output to Webpack.
+The basics is that the `haxe-loader` allow to "require" an 
+[HXML file](https://haxe.org/manual/compiler-usage-hxml.html), 
+which in turn will provide the (splitted) JS output to Webpack.
 
 This feature is added as a "rule" in the config:
 ```
