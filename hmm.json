@@ -6,6 +6,11 @@
       "dir": "haxelib",
       "ref": "feature/modular",
       "url": "git@github.com:elsassph/webpack-haxe-loader.git"
+    },
+    {
+      "name": "tink_macro",
+      "type": "haxelib",
+      "version": null
     }
   ]
 }
