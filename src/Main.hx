@@ -13,6 +13,10 @@ class Main {
     public function new() {
         trace('new Main');
 
+        Dom.body().appendChild(Dom.html('
+            <h1>Welcome to Webpack + haxe</h1>
+        '));
+
         // Code splitting
         bundle(Foo).then(function(_) {
             var foo = new Foo();

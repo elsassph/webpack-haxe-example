@@ -7,7 +7,7 @@ const dist = __dirname + "/www/";
 
 module.exports = {
     entry: {
-        client: './build.hxml'
+        app: './build.hxml'
     },
     output: {
         path: dist,
@@ -17,7 +17,8 @@ module.exports = {
     devServer: {
         contentBase: dist,
         compress: true,
-        port: 9000
+        port: 9000,
+        overlay: true
     },
     module: {
         rules: [
@@ -47,3 +48,15 @@ module.exports = {
         })
     ],
 };
+
+/*
+Building for production:
+
+- Set 'NODE_ENV=production' to do a true release build
+
+- You'll probably want to also: 
+    - minify/uglify the output using UglifyJSPlugin, 
+    - extract the small CSS chunks into a single file using ExtractTextPlugin
+
+- Look into 
+*/

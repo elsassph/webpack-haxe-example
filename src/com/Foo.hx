@@ -1,13 +1,13 @@
 package com;
 
-import js.html.DivElement;
+import js.html.Element;
 import Webpack.*;
 
 class Foo {
     static var STYLES = require('./Foo.css');
     static var IMG = require('./bug.png');
 
-    public var view:DivElement;
+    public var view:Element;
     var m:Map<String, String>;
 
     public function new() {
@@ -16,11 +16,10 @@ class Foo {
         m = new Map();
         m.set('hello', 'This is an asynchronous module');
 
-        view = Dom.div();
-        view.innerHTML = '
+        view = Dom.html('
             <div class="foo">
                 <img src="$IMG"/> ${m.get('hello')}
             </div>
-        ';
+        ');
     }
 }
