@@ -13,7 +13,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // Options
 const buildMode = process.env.NODE_ENV || 'development';
 const sourcemapsMode = buildMode !== 'production' ? 'eval-source-map' : undefined;
-const dist = __dirname + "/www/";
+const dist = `${__dirname}/www/`;
 
 //
 // Configuration:
