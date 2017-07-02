@@ -1,7 +1,8 @@
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const devtool = process.env.NODE_ENV !== 'production' ? 'cheap-module-eval-source-map' : undefined;
+const mode = process.env.NODE_ENV || 'development';
+const devtool = mode !== 'production' ? 'cheap-module-eval-source-map' : undefined;
 const dist = __dirname + "/www/";
 
 module.exports = {
@@ -23,6 +24,9 @@ module.exports = {
             {
                 test: /\.hxml$/,
                 loader: 'haxe-loader',
+                options: {
+                    extra: `-D build_mode=${mode}`
+                }
             },
             {
                 test: /\.(png|jpg|json)$/,
@@ -30,12 +34,16 @@ module.exports = {
                 options: {
                     name: '[name].[hash:7].[ext]'
                 }
+            },
+            {
+                test: /\.css$/,
+                loader: 'style-loader!css-loader'
             }
         ]
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Webpack+Haxe example'
+            title: 'Webpack + Haxe example'
         })
     ],
 };

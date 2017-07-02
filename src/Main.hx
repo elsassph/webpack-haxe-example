@@ -1,6 +1,9 @@
 import com.Foo;
 
+import Webpack.*;
+
 class Main {
+    static var STYLES = require('./Main.css');
 
     static public function main() {
         trace('starting...');
@@ -11,7 +14,7 @@ class Main {
         trace('new Main');
 
         // Code splitting
-        Webpack.load(Foo).then(function(_) {
+        bundle(Foo).then(function(_) {
             var foo = new Foo();
             Dom.body().appendChild(foo.view);
         });

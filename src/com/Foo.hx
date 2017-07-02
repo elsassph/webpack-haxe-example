@@ -1,9 +1,11 @@
 package com;
 
 import js.html.DivElement;
+import Webpack.*;
 
 class Foo {
-    static var IMG = Webpack.require('./bug.png');
+    static var STYLES = require('./Foo.css');
+    static var IMG = require('./bug.png');
 
     public var view:DivElement;
     var m:Map<String, String>;
@@ -16,7 +18,9 @@ class Foo {
 
         view = Dom.div();
         view.innerHTML = '
-            <div><img src="$IMG"/> ${m.get('hello')}</div>
+            <div class="foo">
+                <img src="$IMG"/> ${m.get('hello')}
+            </div>
         ';
     }
 }
