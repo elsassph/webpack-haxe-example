@@ -11,8 +11,6 @@ class Foo {
     public var view:Element;
 
     public function new() {
-        trace('new Foo');
-
         view = Dom.html('
             <div class="foo">
                 <img src="$IMG"/> ${CONFIG.hello}
