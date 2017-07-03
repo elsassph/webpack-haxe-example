@@ -41,7 +41,7 @@ modules asynchronously:
 import com.Foo;
 ...
 // Extract Foo (and dependencies) into a separate bundle
-Webpack.bundle(Foo).then(function(_) {
+Webpack.aync(Foo).then(function(_) {
 	// Foo is now loaded
 	var foo = new Foo();
 });
