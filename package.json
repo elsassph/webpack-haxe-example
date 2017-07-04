@@ -5,7 +5,7 @@
   "dependencies": {
     "css-loader": "^0.28.4",
     "file-loader": "^0.11.2",
-    "haxe-loader": "git://github.com/elsassph/webpack-haxe-loader.git#feature/modular",
+    "haxe-loader": "^0.3.1",
     "html-webpack-plugin": "^2.29.0",
     "style-loader": "^0.18.2",
     "webpack": "^3.0.0",
