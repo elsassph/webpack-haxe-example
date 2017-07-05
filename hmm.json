@@ -2,10 +2,8 @@
   "dependencies": [
     {
       "name": "haxe-loader",
-      "type": "git",
-      "dir": "haxelib",
-      "ref": "feature/modular",
-      "url": "git@github.com:elsassph/webpack-haxe-loader.git"
+      "type": "haxelib",
+      "version": null
     }
   ]
 }
