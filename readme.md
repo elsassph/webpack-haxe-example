@@ -62,7 +62,8 @@ This feature is added as a "rule" in the config:
 	test: /\.hxml$/,
 	loader: 'haxe-loader',
 	options: {
-		extra: `-D some_extra=arguments`
+		extra: `-D some_extra=arguments`,
+		debug: debugMode
 	}
 },
 ```
@@ -106,3 +107,8 @@ Then start Webpack webserver, open `http://localhost:9000`, and enjoy live reloa
 To build the project statically, run:
 
 	yarn build
+
+For a production release:
+
+	export NODE_ENV=production
+	yarn build -p
