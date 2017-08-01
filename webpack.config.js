@@ -12,7 +12,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // Options
 const buildMode = process.env.NODE_ENV || 'development';
-const sourcemapsMode = buildMode !== 'production' ? 'eval-source-map' : undefined;
+const debugMode = buildMode !== 'production';
+const sourcemapsMode = debugMode ? 'eval-source-map' : undefined;
 const dist = `${__dirname}/www/`;
 
 //
@@ -53,7 +54,8 @@ module.exports = {
                 loader: 'haxe-loader',
                 options: {
                     // Additional compiler options added to all builds
-                    extra: `-D build_mode=${buildMode}`
+                    extra: `-D build_mode=${buildMode}`,
+                    debug: debugMode
                 }
             },
             // Static assets loader
