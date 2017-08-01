@@ -1429,18 +1429,18 @@ hawk@~3.1.3:
     hoek "2.x.x"
     sntp "1.x.x"
 
-haxe-loader@^0.3.1:
+"haxe-loader@git://github.com/elsassph/webpack-haxe-loader.git#feature/refactoring":
   version "0.3.1"
-  resolved "https://registry.yarnpkg.com/haxe-loader/-/haxe-loader-0.3.1.tgz#97606179adf0f7288378408c75a52037ca17b3d9"
+  resolved "git://github.com/elsassph/webpack-haxe-loader.git#bf06a909baa526ee9dcf233c91f5c26b294f1ddf"
   dependencies:
     hash-sum "^1.0.2"
-    haxe-modular "git://github.com/elsassph/haxe-modular.git#feature/webpack"
+    haxe-modular "git://github.com/elsassph/haxe-modular.git#feature/webpack_refactoring"
     loader-utils "^1.1.0"
     tmp "0.0.31"
 
-"haxe-modular@git://github.com/elsassph/haxe-modular.git#feature/webpack":
+"haxe-modular@git://github.com/elsassph/haxe-modular.git#feature/webpack_refactoring":
   version "0.2.0"
-  resolved "git://github.com/elsassph/haxe-modular.git#43ec886278e1ceeb39ea3e3db0bd7ce9332fc9ca"
+  resolved "git://github.com/elsassph/haxe-modular.git#28208b265db9cf6330ff324bb6443f0dbf7686b2"
   dependencies:
     acorn "^4.0.3"
     graphlib "^2.1.1"

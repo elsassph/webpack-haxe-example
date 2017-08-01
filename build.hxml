@@ -1,4 +1,4 @@
 -lib haxe-loader
 -cp src
 -js app.js
--main Main
+-main App

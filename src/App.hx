@@ -2,11 +2,11 @@ import com.Foo;
 
 import Webpack.*;
 
-class Main {
-    static var STYLES = require('./Main.css');
+class App {
+    static var STYLES = require('./App.css');
 
     static public function main() {
-        new Main();
+        new App();
     }
 
     public function new() {
