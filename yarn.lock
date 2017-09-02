@@ -1464,18 +1464,18 @@ hawk@~3.1.3:
     hoek "2.x.x"
     sntp "1.x.x"
 
-haxe-loader@^0.3.3:
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/haxe-loader/-/haxe-loader-0.3.3.tgz#78ffa5f6fc735d657ac509abf1b3810e34801b88"
+haxe-loader@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/haxe-loader/-/haxe-loader-0.4.0.tgz#739d9072a1fff9cfccc1d553569ef26310dfe41b"
   dependencies:
     hash-sum "^1.0.2"
-    haxe-modular "^0.3.0"
+    haxe-modular "^0.4.0"
     loader-utils "^1.1.0"
     tmp "0.0.31"
 
-haxe-modular@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/haxe-modular/-/haxe-modular-0.3.0.tgz#705e10094651bd582112423d9dc60def5f8b33cd"
+haxe-modular@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/haxe-modular/-/haxe-modular-0.4.0.tgz#4a48540fb2c2d723ebbf337b45eac0ac107c7b84"
   dependencies:
     acorn "^4.0.3"
     graphlib "^2.1.1"
