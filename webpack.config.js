@@ -1,5 +1,5 @@
 //
-// Webpack documentation is fairly extensive, 
+// Webpack documentation is fairly extensive,
 // just search on https://webpack.js.org/
 //
 // Be careful: there are a lot of outdated examples/samples,
@@ -13,12 +13,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // Options
 const buildMode = process.env.NODE_ENV || 'development';
 const debugMode = buildMode !== 'production';
-const sourcemapsMode = debugMode ? 'eval-source-map' : undefined;
-const dist = `${__dirname}/www/`;
+const dist = __dirname + '/www/';
+
+// Sourcemaps: https://webpack.js.org/configuration/devtool/
+// - 'eval-source-map': fast, but JS bundle is somewhat obfuscated
+// - 'source-map': slow, but JS bundle is readable
+// - undefined: no map, and JS bundle is readable
+const sourcemapsMode = debugMode ? 'source-map' : undefined;
 
 //
 // Configuration:
-// This configuration is still relatively minimalistic; 
+// This configuration is still relatively minimalistic;
 // each section has many more options
 //
 module.exports = {
@@ -30,7 +35,7 @@ module.exports = {
     // Generation options (destination, naming pattern,...)
     output: {
         path: dist,
-        filename: '[name].[chunkhash:7].js'
+        filename: 'bundle.js'
     },
     // Module resolution options (alias, default paths,...)
     resolve: {
@@ -43,7 +48,8 @@ module.exports = {
         contentBase: dist,
         compress: true,
         port: 9000,
-        overlay: true
+        overlay: true,
+        hot: true
     },
     // List all the processors
     module: {
@@ -54,7 +60,7 @@ module.exports = {
                 loader: 'haxe-loader',
                 options: {
                     // Additional compiler options added to all builds
-                    extra: `-D build_mode=${buildMode}`,
+                    extra: '-D build_mode=' + buildMode,
                     debug: debugMode
                 }
             },
@@ -74,19 +80,29 @@ module.exports = {
             // - also consider adding postcss-loader for autoprefixing
             {
                 test: /\.css$/,
-                loader: 'style-loader!css-loader'
+                use: [
+					'style-loader',
+					'css-loader'
+				]
             }
         ]
     },
     // Plugins can hook to the compiler lifecycle and handle extra tasks
     plugins: [
+        // HMR: enable globally
+        new webpack.HotModuleReplacementPlugin(),
+        // HMR: prints more readable module names in the browser console on updates
+        new webpack.NamedModulesPlugin(),
+        // HMR: do not emit compiled assets that include errors
+        new webpack.NoEmitOnErrorsPlugin(),
+
         // Like generating the HTML page with links the generated JS files
         new HtmlWebpackPlugin({
             title: 'Webpack + Haxe example'
         })
         // You may want to also:
-        // - minify/uglify the output using UglifyJSPlugin, 
         // - extract the small CSS chunks into a single file using ExtractTextPlugin
+        // - avoid modules duplication using CommonsChunkPlugin
         // - inspect your JS output weight using BundleAnalyzerPlugin
     ],
 };

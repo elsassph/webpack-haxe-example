@@ -102,6 +102,20 @@ Then start Webpack webserver, open `http://localhost:9000`, and enjoy live reloa
 
 	yarn start
 
+### Hot Module Replacement
+
+Hot-Module Replacement is the technique allowing, while your browser is showing your 
+live application, to hot-reload CSS and the Haxe modules!
+
+React views in asynchronous modules will automatically refresh themselves if you edit
+and save: Webpack will recompile the project, reload the module, and re-render the 
+views without losing state. un and try editing `Foo.hx`!
+
+For that you only need to:
+- add `-D react_hot` in your `hxml`,
+- call `ReactHMR.autoRefresh` after the main render (see `App.hx`),
+- run in live debug mode (`yarn start`).
+
 ### Releasing
 
 To build the project statically, run:

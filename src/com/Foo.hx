@@ -1,19 +1,21 @@
 package com;
 
-import js.html.Element;
+import react.ReactComponent;
+import react.ReactMacro.jsx;
 import Webpack.*;
 
-class Foo {
+class Foo extends ReactComponent {
+
     static var STYLES = require('./Foo.css');
     static var IMG = require('./bug.png');
     static var CONFIG = require('../config.json');
 
-    public var view:Element;
-
-    public function new() {
-        view = Dom.html('
-            <div class="foo">
-                <img src="$IMG"/> ${CONFIG.hello}
+    override function render() {
+        return jsx('
+            <div className="foo">
+                <img src=$IMG/> ${CONFIG.hello}!
+                <hr/>
+                Let\'s do some HRM boys<br/>
             </div>
         ');
     }

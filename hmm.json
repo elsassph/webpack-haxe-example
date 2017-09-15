@@ -3,7 +3,12 @@
     {
       "name": "haxe-loader",
       "type": "haxelib",
-      "version": null
+      "version": "0.2.1"
+    },
+    {
+      "name": "react",
+      "type": "haxelib",
+      "version": "1.2.1"
     }
   ]
 }

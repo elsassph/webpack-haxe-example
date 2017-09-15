@@ -1,5 +1,4 @@
-import com.Foo;
-
+import react.ReactMacro.jsx;
 import Webpack.*;
 
 class App {
@@ -10,14 +9,23 @@ class App {
     }
 
     public function new() {
-        Dom.body().appendChild(Dom.html('
-            <h1>Welcome to Webpack + haxe</h1>
-        '));
+        var root = createRoot();
 
-        // Code splitting
-        async(Foo).then(function(_) {
-            var foo = new Foo();
-            Dom.body().appendChild(foo.view);
-        });
+        var rootComponent = react.ReactDOM.render(jsx('
+            <Root/>
+        '), root);
+
+        #if debug
+        ReactHMR.autoRefresh(rootComponent);
+        #end
+    }
+
+    function createRoot() {
+        var current = js.Browser.document.getElementById('root');
+        if (current != null) return current;
+        current = Dom.div();
+        current.id = 'root';
+        Dom.body().appendChild(current);
+        return current;
     }
 }
