@@ -15,7 +15,7 @@ class App {
         '));
 
         // Code splitting
-        async(Foo).then(function(_) {
+        load(Foo).then(function(_) {
             var foo = new Foo();
             Dom.body().appendChild(foo.view);
         });

@@ -14,5 +14,8 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
     "start": "webpack-dev-server"
+  },
+  "config": {
+    "haxe-split-hook": "graph-hook.js"
   }
 }

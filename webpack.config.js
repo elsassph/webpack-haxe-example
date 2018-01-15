@@ -1,5 +1,5 @@
 //
-// Webpack documentation is fairly extensive, 
+// Webpack documentation is fairly extensive,
 // just search on https://webpack.js.org/
 //
 // Be careful: there are a lot of outdated examples/samples,
@@ -18,7 +18,7 @@ const dist = `${__dirname}/www/`;
 
 //
 // Configuration:
-// This configuration is still relatively minimalistic; 
+// This configuration is still relatively minimalistic;
 // each section has many more options
 //
 module.exports = {
@@ -30,7 +30,7 @@ module.exports = {
     // Generation options (destination, naming pattern,...)
     output: {
         path: dist,
-        filename: '[name].[chunkhash:7].js'
+        filename: '[name].[hash:7].js'
     },
     // Module resolution options (alias, default paths,...)
     resolve: {
@@ -43,7 +43,8 @@ module.exports = {
         contentBase: dist,
         compress: true,
         port: 9000,
-        overlay: true
+        overlay: true,
+        hot: true
     },
     // List all the processors
     module: {
@@ -80,12 +81,19 @@ module.exports = {
     },
     // Plugins can hook to the compiler lifecycle and handle extra tasks
     plugins: [
+        // HMR: enable globally
+        new webpack.HotModuleReplacementPlugin(),
+        // HMR: prints more readable module names in the browser console on updates
+        new webpack.NamedModulesPlugin(),
+        // HMR: do not emit compiled assets that include errors
+        new webpack.NoEmitOnErrorsPlugin(),
+
         // Like generating the HTML page with links the generated JS files
         new HtmlWebpackPlugin({
             title: 'Webpack + Haxe example'
         })
         // You may want to also:
-        // - minify/uglify the output using UglifyJSPlugin, 
+        // - minify/uglify the output using UglifyJSPlugin,
         // - extract the small CSS chunks into a single file using ExtractTextPlugin
         // - inspect your JS output weight using BundleAnalyzerPlugin
     ],
