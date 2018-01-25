@@ -5,7 +5,7 @@
   "dependencies": {
     "css-loader": "^0.28.4",
     "file-loader": "^0.11.2",
-    "haxe-loader": "^0.4.0",
+    "haxe-loader": "^0.7.1",
     "html-webpack-plugin": "^2.29.0",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
