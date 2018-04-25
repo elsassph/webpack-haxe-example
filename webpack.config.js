@@ -101,6 +101,7 @@ module.exports = {
             title: 'Webpack + Haxe example'
         })
         // You may want to also:
+        // - minify/uglify the output using UglifyJSPlugin,
         // - extract the small CSS chunks into a single file using ExtractTextPlugin
         // - avoid modules duplication using CommonsChunkPlugin
         // - inspect your JS output weight using BundleAnalyzerPlugin
