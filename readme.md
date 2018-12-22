@@ -5,9 +5,7 @@ for bundling (code and assets) and lazy loading.
 
 It's really easy and absolutely transparent in the code!
 
-**Note: this is the "vanilla DOM" example, loot at the
-[react branch](https://github.com/elsassph/webpack-haxe-example/tree/react)
-for a React example.**
+**Note: this is a "vanilla DOM" example - no 3rd party library involved!**
 
 
 ## How it works
