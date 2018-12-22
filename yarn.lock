@@ -1724,9 +1724,10 @@ haxe-error-parser@0.1.2:
   dependencies:
     chalk "^1.1.3"
 
-"haxe-loader@https://github.com/elsassph/webpack-haxe-loader.git":
+haxe-loader@^0.9.0:
   version "0.9.0"
-  resolved "https://github.com/elsassph/webpack-haxe-loader.git#23b668e7b248bccaf77e08b507ea89155cddfa5c"
+  resolved "https://registry.yarnpkg.com/haxe-loader/-/haxe-loader-0.9.0.tgz#083314ca390daa07605ce8becf278efe5f7c4c38"
+  integrity sha512-PRe/o+WxGZLY77bkCmcTLNcWI/wOrT7q+vPzp20Xp2XfqxNU7yXo4Vp2zL/wyAztn+54tCnL1qBm94w4yq5PPQ==
   dependencies:
     chalk "^1.1.3"
     hash-sum "^1.0.2"
