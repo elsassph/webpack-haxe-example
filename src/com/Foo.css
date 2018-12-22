@@ -3,3 +3,12 @@
     padding: 10px;
     background: #eee;
 }
+
+.foo .yeah {
+    margin-top: 20px;
+}
+
+.foo .yeah p {
+    margin: 0;
+    border-bottom: solid 1px red;
+}

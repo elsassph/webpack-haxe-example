@@ -13,8 +13,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // Options
 const buildMode = process.env.NODE_ENV || 'development';
 const debugMode = buildMode !== 'production';
-const sourcemapsMode = debugMode ? 'eval-source-map' : undefined;
-const dist = `${__dirname}/www/`;
+const dist = __dirname + '/www/';
+
+// Sourcemaps: https://webpack.js.org/configuration/devtool/
+// - 'eval-source-map': fast, but JS bundle is somewhat obfuscated
+// - 'source-map': slow, but JS bundle is readable
+// - undefined: no map, and JS bundle is readable
+const sourcemapsMode = debugMode ? 'source-map' : undefined;
 
 //
 // Configuration:
@@ -22,6 +27,7 @@ const dist = `${__dirname}/www/`;
 // each section has many more options
 //
 module.exports = {
+    mode: 'development',
     // List all the JS modules to create
     // They will all be linked in the HTML page
     entry: {
@@ -55,8 +61,9 @@ module.exports = {
                 loader: 'haxe-loader',
                 options: {
                     // Additional compiler options added to all builds
-                    extra: `-D build_mode=${buildMode}`,
-                    debug: debugMode
+                    extra: '-D build_mode=' + buildMode,
+                    debug: debugMode,
+                    logCommand: true
                 }
             },
             // Static assets loader
@@ -75,7 +82,10 @@ module.exports = {
             // - also consider adding postcss-loader for autoprefixing
             {
                 test: /\.css$/,
-                loader: 'style-loader!css-loader'
+                use: [
+					'style-loader',
+					'css-loader'
+				]
             }
         ]
     },
@@ -95,6 +105,7 @@ module.exports = {
         // You may want to also:
         // - finer control of minify/uglify process using UglifyJSPlugin,
         // - extract the small CSS chunks into a single file using ExtractTextPlugin
+        // - avoid modules duplication using CommonsChunkPlugin
         // - inspect your JS output weight using BundleAnalyzerPlugin
     ],
 };

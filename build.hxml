@@ -1,4 +1,8 @@
 -lib haxe-loader
+-lib react
+
 -cp src
 -js app.js
 -main App
+
+-D react_hot
