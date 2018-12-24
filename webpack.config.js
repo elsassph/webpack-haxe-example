@@ -16,10 +16,11 @@ const debugMode = buildMode !== 'production';
 const dist = __dirname + '/www/';
 
 // Sourcemaps: https://webpack.js.org/configuration/devtool/
+// - 'cheap-module-source-map': fastest in Haxe-only setup
 // - 'eval-source-map': fast, but JS bundle is somewhat obfuscated
 // - 'source-map': slow, but JS bundle is readable
 // - undefined: no map, and JS bundle is readable
-const sourcemapsMode = debugMode ? 'source-map' : undefined;
+const sourcemapsMode = debugMode ? 'cheap-module-source-map' : undefined;
 
 //
 // Configuration:
