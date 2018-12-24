@@ -50,7 +50,8 @@ module.exports = {
         compress: true,
         port: 9000,
         overlay: true,
-        hot: true
+        hot: true,
+        disableHostCheck: true
     },
     // List all the processors
     module: {
