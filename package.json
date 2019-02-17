@@ -12,7 +12,8 @@
     "webpack-dev-server": "^2.5.0"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack",
+    "build:dev": "webpack --plugin webpack/lib/debug/ProfilingPlugin",
+    "build": "webpack --mode=production",
     "start": "webpack-dev-server"
   }
 }

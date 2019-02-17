@@ -22,6 +22,7 @@ const dist = `${__dirname}/www/`;
 // each section has many more options
 //
 module.exports = {
+    mode: 'development',
     // List all the JS modules to create
     // They will all be linked in the HTML page
     entry: {
